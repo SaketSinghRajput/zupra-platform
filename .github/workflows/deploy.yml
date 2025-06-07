@@ -3,31 +3,26 @@ name: Deploy to Zupra VM
 on:
   push:
     branches:
-      - main
+      - main  # Change if your branch name is different
 
 jobs:
   deploy:
-    name: Deploy to Zupra VM
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.ZUPRA_VM_SSH_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H 34.57.96.68 >> ~/.ssh/known_hosts
-
-      - name: Deploy code to VM
-        run: |
-          ssh -i ~/.ssh/id_rsa singhsaket513@34.57.96.68 << 'EOF'
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
             cd ~/zupra-platform
             git pull origin main
             source venv/bin/activate
             python manage.py collectstatic --noinput
-            python manage.py migrate
             sudo systemctl restart gunicorn
-          EOF
+            sudo systemctl restart nginx
