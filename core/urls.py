@@ -21,7 +21,7 @@ from .views import home
 urlpatterns = [
     path('', home, name='home'),   # Homepage
     path('admin/', admin.site.urls),
-    path('sponsor/', include('sponsor_portal.urls')),
+  #  path('sponsor/', include('sponsor_portal.urls')),
     path('distributor/', include('distributor_portal.urls')),
     path('qr/', include('qr_engine.urls')),
     path('core-admin/', include('core_admin.urls')),
