@@ -16,14 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import home
+from .views import home, about, products, partners, contact
 
 
 urlpatterns = [
     path('', home, name='home'),   # Homepage
     path('admin/', admin.site.urls),
-  #  path('sponsor/', include('sponsor_portal.urls')),
-   # path('distributor/', include('distributor_portal.urls')),
-   # path('qr/', include('qr_engine.urls')),
+    path('about/', about, name='about'),
+    path('products/', products, name='products'),
+    path('partners/', partners, name='partners'),
+    path('contact/', contact, name='contact'),
+    #  path('sponsor/', include('sponsor_portal.urls')),
+    # path('distributor/', include('distributor_portal.urls')),
+    # path('qr/', include('qr_engine.urls')),
     #path('core-admin/', include('core_admin.urls')),
 ]
