@@ -6,7 +6,7 @@
                 <div class="tagline">THE BEVERAGE THAT TALKS BACK</div>
             </div>
             
-            <nav class="footer-nav">
+            {% comment %} <nav class="footer-nav">
                 <ul class="nav-links">
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'about' %}">About Us</a></li>
@@ -14,7 +14,7 @@
                     <li><a href="{% url 'partners' %}">Partners</a></li>
                     <li><a href="{% url 'contact' %}">Contact</a></li>
                 </ul>
-            </nav>
+            </nav> {% endcomment %}
             
             <div class="social-links">
                 <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -25,10 +25,10 @@
         
         <div class="footer-bottom">
             <p class="copyright">© {% now "Y" %} ZUPRÄ. All rights reserved.</p>
-            <div class="legal-links">
+            {% comment %} <div class="legal-links">
                 <a href="{% url 'privacy' %}">Privacy Policy</a>
                 <a href="{% url 'terms' %}">Terms of Service</a>
-            </div>
+            </div> {% endcomment %}
         </div>
     </div>
 </footer>
