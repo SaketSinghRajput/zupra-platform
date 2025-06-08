@@ -1,257 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zupra | The Beverage That Talks Back</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --gold: #d4af37;
-            --black: #000000;
-            --dark-bg: #121212;
-            --light-gray: #f5f5f5;
-            --medium-gray: #aaaaaa;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--black);
-            color: var(--light-gray);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 60px;
-            letter-spacing: 1px;
-            color: var(--gold);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 60px;
-            color: var(--medium-gray);
-            font-size: 1.1rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                        url('https://images.unsplash.com/photo-1551029506-0807df4e2031?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
-            height: 100vh;
-            min-height: 600px;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero-content {
-            width: 100%;
-        }
-
-        .hero-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
-            font-size: 4rem;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-            color: var(--gold);
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 40px;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--gold);
-            color: var(--black);
-            padding: 15px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            border: 1px solid var(--gold);
-        }
-
-        .btn:hover {
-            background-color: transparent;
-            color: var(--gold);
-        }
-
-        /* How It Works Section */
-        .steps {
-            background-color: var(--dark-bg);
-        }
-
-        .steps-container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-
-        .step {
-            flex: 1;
-            min-width: 250px;
-            text-align: center;
-            padding: 30px;
-        }
-
-        .step-icon {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        .step-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--light-gray);
-        }
-
-        /* Products Section */
-        .products-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-
-        .product {
-            width: 300px;
-            text-align: center;
-        }
-
-        .product-image {
-            width: 100%;
-            height: 400px;
-            object-fit: contain;
-            margin-bottom: 20px;
-            background-color: var(--dark-bg);
-            border-radius: 5px;
-        }
-
-        .product-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: var(--gold);
-        }
-
-        /* Partners Section */
-        .partners {
-            background-color: var(--dark-bg);
-        }
-
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 40px;
-            align-items: center;
-            justify-items: center;
-        }
-
-        .partner-logo {
-            width: 100%;
-            max-width: 180px;
-            height: 80px;
-            object-fit: contain;
-            filter: grayscale(100%) brightness(0.8);
-            transition: all 0.3s ease;
-        }
-
-        .partner-logo:hover {
-            filter: grayscale(0%) brightness(1) sepia(100%) hue-rotate(30deg) saturate(5);
-        }
-
-        /* Features Section */
-        .features-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-
-        .feature {
-            flex: 1;
-            min-width: 250px;
-            max-width: 300px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        .feature-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .step {
-                min-width: 100%;
-            }
-
-            .product {
-                width: 100%;
-                max-width: 350px;
-            }
-        }
-    </style>
-</head>
-<body>
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
@@ -305,19 +54,19 @@
             
             <div class="products-container">
                 <div class="product">
-                    <img src="https://via.placeholder.com/300x400/121212/d4af37?text=ZUPRÄ+Classic" alt="Zupra Classic" class="product-image">
+                    <img src="{% static 'images/classic.jpg' %}" alt="Zupra Classic" class="product-image">
                     <h3 class="product-title">Classic Edition</h3>
                     <p>Our signature blend with interactive cocktail recipes and mixology tips</p>
                 </div>
                 
                 <div class="product">
-                    <img src="https://via.placeholder.com/300x400/121212/d4af37?text=ZUPRÄ+Sparkling" alt="Zupra Sparkling" class="product-image">
+                    <img src="{% static 'images/sparkling.jpg' %}" alt="Zupra Sparkling" class="product-image">
                     <h3 class="product-title">Sparkling Edition</h3>
                     <p>Elegant sparkling beverage with exclusive virtual event access</p>
                 </div>
                 
                 <div class="product">
-                    <img src="https://via.placeholder.com/300x400/121212/d4af37?text=ZUPRÄ+Reserve" alt="Zupra Reserve" class="product-image">
+                    <img src="{% static 'images/reserve.jpg' %}" alt="Zupra Reserve" class="product-image">
                     <h3 class="product-title">Reserve Collection</h3>
                     <p>Ultra-premium limited edition with NFT collectibles</p>
                 </div>
@@ -332,11 +81,9 @@
             <p class="section-subtitle">Collaborating with premium brands to enhance your experience</p>
             
             <div class="partners-grid">
-                <img src="https://via.placeholder.com/180x80/121212/ffffff?text=BRAND+1" alt="Partner 1" class="partner-logo">
-                <img src="https://via.placeholder.com/180x80/121212/ffffff?text=BRAND+2" alt="Partner 2" class="partner-logo">
-                <img src="https://via.placeholder.com/180x80/121212/ffffff?text=BRAND+3" alt="Partner 3" class="partner-logo">
-                <img src="https://via.placeholder.com/180x80/121212/ffffff?text=BRAND+4" alt="Partner 4" class="partner-logo">
-                <img src="https://via.placeholder.com/180x80/121212/ffffff?text=BRAND+5" alt="Partner 5" class="partner-logo">
+                {% for partner in partners %}
+                <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" class="partner-logo">
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -382,6 +129,4 @@
             </div>
         </div>
     </section>
-</body>
-</html>
 {% endblock %}
